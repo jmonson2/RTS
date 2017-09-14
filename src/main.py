@@ -19,6 +19,8 @@ class main:
     bufferA[3][6] = 'Z'
 
     bufferB = [[0 for x in range(columns)] for y in range(rows)]
+    bufferC = [[0 for x in range(3)] for y in range (3)]
+    bufferD = [[0 for x in range(3)] for y in range (3)]
 
     print (bufferA)
 
@@ -26,26 +28,27 @@ class main:
     plane_Y = planeY.planeY(0,2)
     plane_Z = planeZ.planeZ(5,6)
 
-    #Proc1 = P1(bufferA, bufferB, plane_X, plane_Y, plane_Z)
+    
     for i in range(0,20):
         time.sleep(1)
-        #Proc1.move(i)
+        #Process 1 work
         if i % 2 == 0:
-            plane_X.move(bufferA)
-            plane_Y.move(bufferA)
-            plane_Z.move(bufferA)
+           # plane_X.move(bufferA)
+            plane_Y.move(bufferB)
+           # plane_Z.move(bufferA)
 
             #if i > 1:
-             #   bufferB = bufferA
+            #   bufferB = bufferA
         #Need P2 to write bufferC
         else:
-            plane_X.move(bufferB)
-            plane_Y.move(bufferB)
-            plane_Z.move(bufferB)
+           # plane_X.move(bufferB)
+            plane_Y.move(bufferA)
+           # plane_Z.move(bufferB)
             #Need P2 to write bufferD
+            #bufferA = bufferB
 
+        print("BUFFER A", bufferA)
     
-        print (bufferA)
 
 
 
