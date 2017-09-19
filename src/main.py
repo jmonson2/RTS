@@ -41,21 +41,14 @@ class main:
             plane_X.move(bufferB)
             plane_Y.move(bufferB)
             plane_Z.move(bufferB)
-
-            #if i > 1:
-            #   bufferB = bufferA
-        #Need P2 to write bufferC
         else:
             plane_X.move(bufferA)
             plane_Y.move(bufferA)
             plane_Z.move(bufferA)
-            #Need P2 to write bufferD
-            #bufferA = bufferB
 
         print("BUFFER A", bufferA)
         print("BUFFER B", bufferB)
 
-        #fillBufferC()
 
 #def fillBufferC(plane_X, plane_Y, plane_Z):
     #Plane X
