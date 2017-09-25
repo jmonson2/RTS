@@ -51,13 +51,13 @@ class main:
         
         for i in range(len(bufferA)):
             for j in range(len(bufferA[i])):
-                if bufferA[i][j] == 'X':
+                if bufferA[i][j] == 'X' or bufferA[i][j] == 'XY' or bufferA[i][j] == 'XZ' or bufferA[i][j] == 'XYZ':
                     bufferC[1][0] = i
                     bufferC[2][0] = j
-                elif bufferA[i][j] == 'Y':
+                elif bufferA[i][j] == 'Y' or bufferA[i][j] == 'XY' or bufferA[i][j] == 'YZ' or bufferA[i][j] == 'XYZ':
                     bufferC[1][1] = i
                     bufferC[2][1] = j
-                elif bufferA[i][j] == 'Z':
+                elif bufferA[i][j] == 'Z' or bufferA[i][j] == 'XZ' or bufferA[i][j] == 'YZ' or bufferA[i][j] == 'XYZ':
                     bufferC[1][2] = i
                     bufferC[2][2] = j
                 else:
@@ -65,13 +65,13 @@ class main:
 
         for i in range(len(bufferB)):
             for j in range(len(bufferB[i])):
-                if bufferB[i][j] == 'X':
+                if bufferB[i][j] == 'X' or bufferB[i][j] == 'XY' or bufferB[i][j] == 'XZ' or bufferB[i][j] == 'XYZ':
                     bufferD[1][0] = i
                     bufferD[2][0] = j
-                elif bufferB[i][j] == 'Y':
+                elif bufferB[i][j] == 'Y' or bufferB[i][j] == 'XY' or bufferB[i][j] == 'YZ' or bufferB[i][j] == 'XYZ':
                     bufferD[1][1] = i
                     bufferD[2][1] = j
-                elif bufferB[i][j] == 'Z':
+                elif bufferB[i][j] == 'Z' or bufferB[i][j] == 'XZ' or bufferB[i][j] == 'YZ' or bufferB[i][j] == 'XYZ':
                     bufferD[1][2] = i
                     bufferD[2][2] = j
                 else:
