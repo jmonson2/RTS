@@ -48,6 +48,39 @@ class main:
 
         print("BUFFER A", bufferA)
         print("BUFFER B", bufferB)
+        
+        for i in range(len(bufferA)):
+            for j in range(len(bufferA[i])):
+                if bufferA[i][j] == 'X':
+                    bufferC[1][0] = i
+                    bufferC[2][0] = j
+                elif bufferA[i][j] == 'Y':
+                    bufferC[1][1] = i
+                    bufferC[2][1] = j
+                elif bufferA[i][j] == 'Z':
+                    bufferC[1][2] = i
+                    bufferC[2][2] = j
+                else:
+                    pass
+
+        for i in range(len(bufferB)):
+            for j in range(len(bufferB[i])):
+                if bufferB[i][j] == 'X':
+                    bufferD[1][0] = i
+                    bufferD[2][0] = j
+                elif bufferB[i][j] == 'Y':
+                    bufferD[1][1] = i
+                    bufferD[2][1] = j
+                elif bufferB[i][j] == 'Z':
+                    bufferD[1][2] = i
+                    bufferD[2][2] = j
+                else:
+                    pass
+
+        print("BUFFER C")
+        print(bufferC)
+        print("BUFFER D")
+        print(bufferD)
 
 
 #def fillBufferC(plane_X, plane_Y, plane_Z):
