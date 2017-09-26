@@ -10,9 +10,9 @@ class planeY:
         self.currentPos_Row = (self.currentPos_Row + 1) % 8
         self.addCheck(positionMatrix)
         #positionMatrix[self.currentPos_Row][self.currentPos_Col] = 'Y'
-        print("PLANE Y")
-        print("Row:", self.currentPos_Row)
-        print("Column:", self.currentPos_Col)
+     #   print("PLANE Y")
+     #   print("Row:", self.currentPos_Row)
+     #   print("Column:", self.currentPos_Col)
 
     def getRow(self):
         return self.currentPos_Row

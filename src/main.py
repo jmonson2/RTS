@@ -4,6 +4,8 @@ import planeY
 import planeZ
 import time
 import P1
+import P2
+import P3
 import threading
 
 class main:
@@ -27,104 +29,43 @@ class main:
     bufferD[0][0] = 'X'
     bufferD[0][1] = 'Y'
     bufferD[0][2] = 'Z'
-    print (bufferA)
+   # print (bufferA)
 
     plane_X = planeX.planeX(0,0)
     plane_Y = planeY.planeY(0,2)
     plane_Z = planeZ.planeZ(3,6)
+    p1 = P1.P1(0, plane_X, plane_Y, plane_Z, bufferA, bufferB)
+    p2 = P2.P2(0, bufferC, bufferD)
+    p3 = P3.P3(bufferC, bufferD)
 
     
     for i in range(0,20):
+        print("")
+      #  print("")
+      #  print("")
+      #  print("TIME ", i+1)
+     #   print("")
+
         time.sleep(1)
         #Process 1 work
-        if i % 2 == 0:
-            plane_X.move(bufferB)
-            plane_Y.move(bufferB)
-            plane_Z.move(bufferB)
-        else:
-            plane_X.move(bufferA)
-            plane_Y.move(bufferA)
-            plane_Z.move(bufferA)
-
-        print("BUFFER A", bufferA)
-        print("BUFFER B", bufferB)
+        p1.proc1(i, plane_X, plane_Y, plane_Z, bufferA, bufferB)
         
-        for i in range(len(bufferA)):
-            for j in range(len(bufferA[i])):
-                if bufferA[i][j] == 'X':
-                    bufferC[1][0] = i
-                    bufferC[2][0] = j
-                elif bufferA[i][j] == 'Y':
-                    bufferC[1][1] = i
-                    bufferC[2][1] = j
-                elif bufferA[i][j] == 'Z':
-                    bufferC[1][2] = i
-                    bufferC[2][2] = j
-                elif bufferA[i][j] == 'XY':
-                    bufferC[1][0] = i
-                    bufferC[2][0] = j
-                    bufferC[1][1] = i
-                    bufferC[2][1] = j
-                elif bufferA[i][j] == 'XZ':
-                    bufferC[1][0] = i
-                    bufferC[2][0] = j
-                    bufferC[1][2] = i
-                    bufferC[2][2] = j
-                elif bufferA[i][j] == 'XYZ':
-                    bufferC[1][0] = i
-                    bufferC[2][0] = j
-                    bufferC[1][1] = i
-                    bufferC[2][1] = j
-                    bufferC[1][2] = i
-                    bufferC[2][2] = j
-                else:
-                    pass
+        #Process 2 Work
+        if i % 2 is 0:
+            p2.proc2AC(i,bufferA,bufferC)
+        else:
+            p2.proc2BD(i, bufferB, bufferD)
 
-        for i in range(len(bufferB)):
-            for j in range(len(bufferB[i])):
-                if bufferB[i][j] == 'X':
-                    bufferD[1][0] = i
-                    bufferD[2][0] = j
-                elif bufferB[i][j] == 'Y':
-                    bufferD[1][1] = i
-                    bufferD[2][1] = j
-                elif bufferB[i][j] == 'Z':
-                    bufferD[1][2] = i
-                    bufferD[2][2] = j
-                elif bufferB[i][j] == 'XY':
-                    bufferD[1][0] = i
-                    bufferD[2][0] = j
-                    bufferD[1][1] = i
-                    bufferD[2][1] = j
-                elif bufferB[i][j] == 'XZ':
-                    bufferD[1][0] = i
-                    bufferD[2][0] = j
-                    bufferD[1][2] = i
-                    bufferD[2][2] = j
-                elif bufferB[i][j] == 'XYZ':
-                    bufferD[1][0] = i
-                    bufferD[2][0] = j
-                    bufferD[1][1] = i
-                    bufferD[2][1] = j
-                    bufferD[1][2] = i
-                    bufferD[2][2] = j
-                else:
-                    pass
+        #Process 3 Work
+        if i % 2 is 0:
+            p3.checkC(i, bufferC)
+        else:  
+            p3.checkD(i, bufferD)
+      #  print("BUFFER C")
+      #  print(bufferC)
+      #  print("BUFFER D")
+      #  print(bufferD)
 
-        print("BUFFER C")
-        print(bufferC)
-        print("BUFFER D")
-        print(bufferD)
-
-
-#def fillBufferC(plane_X, plane_Y, plane_Z):
-    #Plane X
-    #bufferC[0][1] = plane_X.getRow()
-    #Plane Y
-    #Plane Z
-
-     
-    #Process 3 Work
     
 
 
