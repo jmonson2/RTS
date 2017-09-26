@@ -1,22 +1,26 @@
 import threading
 class P1(threading.Thread):
     
-    def __init__(self, bufferA, bufferB, planeX, planeY, planeZ):
-        threading.Thread.__init__(self)
+    def __init__(self, time, planeX, planeY, planeZ, bufferA, bufferB):
         threadNum = 1
         self.bufferA = bufferA
         self.bufferB = bufferB
-        self.planeX = planeX
-        self.planeY = planeY
-        self.planeZ = planeZ
+        self.plane_X = planeX
+        self.plane_Y = planeY
+        self.plane_Z = planeZ
 
-    def move(self, time):
-        if time % 2 == 0:
-            self.planeX.move(self.bufferA)
-            self.planeY.move(self.bufferA)
-            self.planeZ.move(self.bufferA)
+    def proc1(self,time,plane_X,plane_Y,plane_Z,bufferA,bufferB):
+        i = time
+        if i % 2 == 0:
+            plane_X.move(bufferB)
+            plane_Y.move(bufferB)
+            plane_Z.move(bufferB)
         else:
-            self.planeX.move(self.bufferB)
-            self.planeY.move(self.bufferB)
-            self.planeZ.move(self.bufferB)
+            plane_X.move(bufferA)
+            plane_Y.move(bufferA)
+            plane_Z.move(bufferA)
+
+
+        #print("BUFFER A", bufferA)
+      #  print("BUFFER B", bufferB)
 
