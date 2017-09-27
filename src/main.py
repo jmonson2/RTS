@@ -30,15 +30,27 @@ class main:
     bufferD[0][1] = 'Y'
     bufferD[0][2] = 'Z'
    # print (bufferA)
+    semA = threading.Semaphore()
+    semB = threading.Semaphore()
+    semC = threading.Semaphore()
+    semD = threading.Semaphore()
 
     plane_X = planeX.planeX(0,0)
     plane_Y = planeY.planeY(0,2)
     plane_Z = planeZ.planeZ(3,6)
-    p1 = P1.P1(0, plane_X, plane_Y, plane_Z, bufferA, bufferB)
+    p1 = P1.P1(0, plane_X, plane_Y, plane_Z, bufferA, bufferB, semA, semB)
     p2 = P2.P2(0, bufferC, bufferD)
     p3 = P3.P3(bufferC, bufferD)
 
-    
+    #thread class declarations
+    i = 0
+    t1 = threading.Thread(target=p1.proc1,args=(i, plane_X, plane_Y, plane_Z, bufferA, bufferB, semA, semB))
+    t2ac = threading.Thread(target=p2.proc2AC, args=(i,bufferA,bufferC))
+    t2bd = threading.Thread(target=p2.proc2BD, args=(i,bufferA,bufferC))
+    t3c = threading.Thread(target=p3.checkC, args=(i, bufferC))
+    t3d = threading.Thread(target=p3.checkD, args=(i, bufferC))
+
+    t1.start()
     for i in range(0,20):
         print("")
       #  print("")
@@ -48,13 +60,15 @@ class main:
 
         time.sleep(1)
         #Process 1 work
-        p1.proc1(i, plane_X, plane_Y, plane_Z, bufferA, bufferB)
+        
+        #p1.proc1(i, plane_X, plane_Y, plane_Z, bufferA, bufferB)
+        #t1.run()
         
         #Process 2 Work
         if i % 2 is 0:
-            p2.proc2AC(i,bufferA,bufferC)
+            p2.proc2AC(i,bufferA,bufferC, semA, semC)
         else:
-            p2.proc2BD(i, bufferB, bufferD)
+            p2.proc2BD(i, bufferB, bufferD, semB, semD)
 
         #Process 3 Work
         if i % 2 is 0:

@@ -4,7 +4,8 @@ class P2:
         self.bufferC = bufferC
         self.bufferD = bufferD
 
-    def proc2AC(self, time, bufferA, bufferC):
+    def proc2AC(self, time, bufferA, bufferC, semA, semC):
+        for i in range(0,20)
         for i in range(len(bufferA)):
             for j in range(len(bufferA[i])):
                 if bufferA[i][j] == 'X':
@@ -41,7 +42,7 @@ class P2:
                 else:
                     pass
 
-    def proc2BD(self, time, bufferB, bufferD):
+    def proc2BD(self, time, bufferB, bufferD, semB, semD):
          
         for i in range(len(bufferB)):
             for j in range(len(bufferB[i])):
