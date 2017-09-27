@@ -45,40 +45,47 @@ class main:
     #thread class declarations
     i = 0
     t1 = threading.Thread(target=p1.proc1,args=(i, plane_X, plane_Y, plane_Z, bufferA, bufferB, semA, semB))
-    t2ac = threading.Thread(target=p2.proc2AC, args=(i,bufferA,bufferC))
-    t2bd = threading.Thread(target=p2.proc2BD, args=(i,bufferA,bufferC))
-    t3c = threading.Thread(target=p3.checkC, args=(i, bufferC))
-    t3d = threading.Thread(target=p3.checkD, args=(i, bufferC))
+    t2ac = threading.Thread(target=p2.proc, args=(i,bufferA,bufferB, bufferC, bufferD, semA, semB, semC, semD))
+    #t2bd = threading.Thread(target=p2.proc2BD, args=(i,bufferB,bufferD, semB, semD))
+    t3c = threading.Thread(target=p3.checkC, args=(i, bufferC, bufferD, semC, semD))
+    #t3d = threading.Thread(target=p3.checkD, args=(i, bufferC, semD))
 
     t1.start()
+    t2ac.start()
+    #t2bd.start()
+    t3c.start()
+    #t3d.start()
     for i in range(0,20):
+        #time.sleep(1)
+        #print bufferA
+        #print bufferB
         print("")
       #  print("")
       #  print("")
       #  print("TIME ", i+1)
      #   print("")
 
-        time.sleep(1)
+        #time.sleep(1)
         #Process 1 work
         
         #p1.proc1(i, plane_X, plane_Y, plane_Z, bufferA, bufferB)
-        #t1.run()
+
         
         #Process 2 Work
-        if i % 2 is 0:
-            p2.proc2AC(i,bufferA,bufferC, semA, semC)
-        else:
-            p2.proc2BD(i, bufferB, bufferD, semB, semD)
+        #if i % 2 is 0:
+            #p2.proc2AC(i,bufferA,bufferC, semA, semC)
+       # else:
+           # p2.proc2BD(i, bufferB, bufferD, semB, semD)
 
         #Process 3 Work
-        if i % 2 is 0:
-            p3.checkC(i, bufferC)
-        else:  
-            p3.checkD(i, bufferD)
-      #  print("BUFFER C")
-      #  print(bufferC)
-      #  print("BUFFER D")
-      #  print(bufferD)
+        #if i % 2 is 0:
+            #p3.checkC(i, bufferC)
+        #else:
+            #p3.checkD(i, bufferD)
+        #print("BUFFER C")
+        #print(bufferC)
+       # print("BUFFER D")
+        #print(bufferD)
 
     
 

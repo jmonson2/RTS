@@ -12,7 +12,7 @@ class planeX:
         self.currentPos_Col = (self.currentPos_Col + 1) % 7
         self.addCheck(positionMatrix)
         #positionMatrix[self.currentPos_Row][self.currentPos_Col] = 'X'
-        #print("PLANE X")
+      #  print("PLANE X")
        # print("Row:", self.currentPos_Row)
         #print("Column:", self.currentPos_Col)
 

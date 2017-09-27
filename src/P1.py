@@ -7,13 +7,13 @@ class P1:
         self.plane_X = planeX
         self.plane_Y = planeY
         self.plane_Z = planeZ
-        #self.semA = threading.Semaphore()
-        #self.semB = threading.Semaphore()
+        self.semA = threading.Semaphore()
+        self.semB = threading.Semaphore()
 
     def proc1(self,time,plane_X,plane_Y,plane_Z,bufferA,bufferB, semA, semB):
         i = time
         for i in range(0,20):
-            time.sleep(1)
+            threading._sleep(1)
             if i % 2 == 0:
                 semB.acquire()
                 plane_X.move(bufferB)
