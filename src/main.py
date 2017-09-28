@@ -34,6 +34,9 @@ class main:
     semB = threading.Semaphore()
     semC = threading.Semaphore()
     semD = threading.Semaphore()
+    sem1 = threading.Semaphore()
+    s2 = threading.Semaphore()
+    s3 = threading.Semaphore()
 
     plane_X = planeX.planeX(0,0)
     plane_Y = planeY.planeY(0,2)
@@ -44,15 +47,16 @@ class main:
 
     #thread class declarations
     i = 0
-    t1 = threading.Thread(target=p1.proc1,args=(i, plane_X, plane_Y, plane_Z, bufferA, bufferB, semA, semB))
-    t2ac = threading.Thread(target=p2.proc, args=(i,bufferA,bufferB, bufferC, bufferD, semA, semB, semC, semD))
-    t2bd = threading.Thread(target=p2.proc2BD, args=(i,bufferB,bufferD, semB, semD))
-    t3c = threading.Thread(target=p3.checkC, args=(i, bufferC, bufferD, semC, semD))
-    #t3d = threading.Thread(target=p3.checkD, args=(i, bufferC, semD))
-
+    t1 = threading.Thread(target=p1.proc1,args=(i, plane_X, plane_Y, plane_Z, bufferA, bufferB, semA, semB,sem1))
+    t2ac = threading.Thread(target=p2.proc, args=(i,bufferA,bufferB, bufferC, bufferD, semA, semB, semC, semD,sem1))
+   # t2bd = threading.Thread(target=p2.proc2BD, args=(i,bufferB,bufferD, semB, semD))
+    t3c = threading.Thread(target=p3.checkC, args=(i, bufferC, bufferD, semC, semD,sem1))
+    #t3d = threading.Thread(target=p3.checkD, args=(i, bufferC, semD))`
     t1.start()
+    #time.sleep(.01)
     t2ac.start()
-    t2bd.start()
+    #time.sleep(.01)
+    #t2bd.start()
     t3c.start()
     #t3d.start()
     #for i in range(0,20):

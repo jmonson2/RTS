@@ -1,5 +1,6 @@
 import threading
 import time
+import sync
 class P1:
     def __init__(self, time, planeX, planeY, planeZ, bufferA, bufferB, semA, semB):
         self.bufferA = bufferA
@@ -9,11 +10,14 @@ class P1:
         self.plane_Z = planeZ
         self.semA = threading.Semaphore()
         self.semB = threading.Semaphore()
+        syn = sync.sync()
 
-    def proc1(self,time,plane_X,plane_Y,plane_Z,bufferA,bufferB, semA, semB):
+
+    def proc1(self,time,plane_X,plane_Y,plane_Z,bufferA,bufferB, semA, semB, sem1):
         i = time
         for i in range(0,20):
             threading._sleep(1)
+            
             if i % 2 == 0:
                 semB.acquire()
                 plane_X.move(bufferB)
@@ -26,6 +30,9 @@ class P1:
                 plane_Y.move(bufferA)
                 plane_Z.move(bufferA)
                 semA.release()
+            #threading._sleep(1)
+            
         #print("BUFFER A", bufferA)
         #print("BUFFER B", bufferB)
+        threading._sleep(1)
 
