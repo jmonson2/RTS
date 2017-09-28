@@ -46,20 +46,20 @@ class main:
     i = 0
     t1 = threading.Thread(target=p1.proc1,args=(i, plane_X, plane_Y, plane_Z, bufferA, bufferB, semA, semB))
     t2ac = threading.Thread(target=p2.proc, args=(i,bufferA,bufferB, bufferC, bufferD, semA, semB, semC, semD))
-    #t2bd = threading.Thread(target=p2.proc2BD, args=(i,bufferB,bufferD, semB, semD))
+    t2bd = threading.Thread(target=p2.proc2BD, args=(i,bufferB,bufferD, semB, semD))
     t3c = threading.Thread(target=p3.checkC, args=(i, bufferC, bufferD, semC, semD))
     #t3d = threading.Thread(target=p3.checkD, args=(i, bufferC, semD))
 
     t1.start()
     t2ac.start()
-    #t2bd.start()
+    t2bd.start()
     t3c.start()
     #t3d.start()
-    for i in range(0,20):
+    #for i in range(0,20):
         #time.sleep(1)
         #print bufferA
         #print bufferB
-        print("")
+      #  print("")
       #  print("")
       #  print("")
       #  print("TIME ", i+1)
