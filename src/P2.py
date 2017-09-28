@@ -1,13 +1,12 @@
 import threading
-import sync
 class P2:
     def __init__(self, time, bufferC, bufferD):
         self.time = time
         self.bufferC = bufferC
         self.bufferD = bufferD
 
-    def proc(self, time, bufferA,bufferB,bufferC, bufferD, semA, semB, semC, semD, sem1):
-        #threading._sleep(.01)
+    def proc(self, time, bufferA,bufferB,bufferC, bufferD, semA, semB, semC, semD):
+        
         for t in range(0,20):
             threading._sleep(1)
             if(t%2 == 0):

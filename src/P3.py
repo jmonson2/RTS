@@ -1,12 +1,11 @@
 import threading
-import sync
 class P3:
     def __init__(self, bufferC, bufferD):
         self.bufferC = bufferC
         self.bufferD = bufferD
 
-    def checkC(self, time, bufferC, bufferD, semC, semD, sem1):
-        #threading._sleep(.02)
+    def check(self, time, bufferC, bufferD, semC, semD):
+        
         time -= 1
         for t in range(0,21):
             threading._sleep(1)
@@ -14,7 +13,7 @@ class P3:
                 
             
             if(t%2==1):
-                #threading._sleep(1)
+                
                 semC.acquire()
                 time += 1
                 if self.getposX(bufferC) == self.getposY(bufferC) and self.getposX(bufferC) != self.getposZ(bufferC):
@@ -34,7 +33,7 @@ class P3:
                 semC.release()
             
             elif t is not 0 and t%2 is 0:
-                #threading._sleep(1)
+                
                 semD.acquire()
                 time += 1
                 if self.getposX(bufferD) == self.getposY(bufferD) and self.getposX(bufferD) != self.getposZ(bufferD):
@@ -52,7 +51,7 @@ class P3:
                 time += 1
             
         
-    #def checkD(self, time, bufferD, semD):
+  
 
 
         
