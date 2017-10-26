@@ -36,13 +36,13 @@ class main:
 
     p1 = P1.P1(0, plane_X, plane_Y, plane_Z, bufferA, bufferB, semA, semB)
     p2 = P2.P2(0, bufferC, bufferD)
-    p3 = P3.P3(bufferC, bufferD)
+    p3 = P3.P3(bufferC, bufferD, plane_X, plane_Y, plane_Z)
 
     #thread class declarations
     i = 0
     t1 = threading.Thread(target=p1.proc1,args=(i, plane_X, plane_Y, plane_Z, bufferA, bufferB, semA, semB))
     t2 = threading.Thread(target=p2.proc, args=(i,bufferA,bufferB, bufferC, bufferD, semA, semB, semC, semD))
-    t3 = threading.Thread(target=p3.check, args=(i, bufferC, bufferD, semC, semD))
+    t3 = threading.Thread(target=p3.check, args=(i, bufferC, bufferD, semC, semD,plane_X,plane_Y,plane_Z))
    
     t1.start()
 
