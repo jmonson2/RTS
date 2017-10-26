@@ -1,10 +1,10 @@
 import threading
 class P3:
-    def __init__(self, bufferC, bufferD):
+    def __init__(self, bufferC, bufferD, planeX, planeY,planeZ):
         self.bufferC = bufferC
         self.bufferD = bufferD
 
-    def check(self, time, bufferC, bufferD, semC, semD):
+    def check(self, time, bufferC, bufferD, semC, semD,planeX,planeY,planeZ):
         
         time -= 1
         for t in range(0,21):
@@ -30,6 +30,7 @@ class P3:
 
                 else:
                     print "No collision at time: ", time
+                
                 semC.release()
             
             elif t is not 0 and t%2 is 0:
@@ -49,13 +50,49 @@ class P3:
                 semD.release()
             else:
                 time += 1
+
+            
+            self.lookahead(planeX, planeY, planeZ)
+            print "X Row: ", planeZ.getRow()
+            print "Y Col: ", planeZ.getCol()
+            
             
         
   
 
 
+    #Looks ahead 2 moves        
+    def lookahead(self,planeX, planeY, planeZ):
         
-
+        #You will need to stop in this method. Find a way to cease threading on P1 and P2 (maybe acquire semaphores?)
+        #PLANEX MOVEMENT
+        #Moves Row+=(Row+1) % 8 | Col+=(Col+1) % 7 SIM ROW + COL
+        #PLANEY MOVEMENT
+        #Moves Row+=(Row+1) % 8 | Col=2 SIM ROW
+        #PLANEZ MOVEMENT
+        #Moves Row=3 | Col+=(Col+1) % 7 SIM COL
+    #move 1:
+        xRow1 = (planeX.getRow() + 1) % 8
+        xCol1 = (planeX.getCol() + 1) % 7
+        yRow1 = (planeY.getRow() + 1) % 8
+        yCol1 = 2
+        zRow1 = 3
+        zCol1 = (planeZ.getCol() + 1) % 7
+        #print "LOOKUP X ROW: ", xRow1
+        #print "LOOKUP X COL: ", xCol1
+        #print "LOOKUP Y ROW: ", yRow1
+        #print "LOOKUP Y COL: ", yCol1
+        #print "LOOKUP Z ROW: ", zRow1
+        #print "LOOKUP Z COL: ", zCol1
+        xRow2 = (xRow1 + 1) % 8
+        xCol2 = (xCol1 + 1) % 7
+        yRow2 = (yRow1 + 1) % 8
+        yCol2 = yCol1
+        zRow2 = zRow1
+        zCol2 = (zCol1 + 1) % 7
+        
+        
+        
     def getposX(self,buffer):
         return str(buffer[1][0]) + str(buffer[2][0])
     def getposY(self,buffer):
