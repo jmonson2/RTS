@@ -32,7 +32,3 @@ class P1:
     
         threading._sleep(1)
 
-    def stop(self):
-        self.semA.acquire()
-        self.semB.acquire()
-        print("stopped!")
