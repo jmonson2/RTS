@@ -86,26 +86,44 @@ class P3:
         if xRow1 == yRow1 and xCol1 == yCol1:
             if xRow1 == zRow2 and xCol1 == zCol2:
                 planeX.stop()
+                threading._sleep(1)
+                planeX.start()
             elif yRow1 == zRow2 and yCol1 == zCol2:
                 planeY.stop()
+                threading._sleep(1)
+                planeY.start()
             else:
                 planeX.stop()
+                threading._sleep(1)
+                planeX.start()
 
         elif xRow1 == zRow1 and xCol1 == zCol1:
             if xRow1 == yRow2 and xCol1 == yCol2:
                 planeX.stop()
+                threading._sleep(1)
+                planeX.start()
             elif zRow1 == yRow2 and zCol1 == yCol2:
                 planeZ.stop() 
+                threading._sleep(1)
+                planeZ.start()
             else:   
                 planeZ.stop()
+                threading._sleep(1)
+                planeZ.start()
 
         elif yRow1 == zRow1 and yCol1 == zCol1:
             if yRow1 == xRow2 and yCol1 == xCol2:
                 planeY.stop()
+                threading._sleep(1)
+                planeY.start()
             elif zRow1 == xRow2 and zCol1 == xCol2:
-                planeZ.stop() 
+                planeZ.stop()
+                threading._sleep(1)
+                planeZ.start() 
             else:
-                planeY.stop()
+                planeY.stop() 
+                threading._sleep(1)
+                planeY.start()    
         
         
         
