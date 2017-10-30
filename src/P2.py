@@ -1,12 +1,15 @@
 import threading
 class P2:
-    def __init__(self, time, bufferC, bufferD):
+    def __init__(self, time, bufferC, bufferD, semA, semB, semC, semD):
         self.time = time
         self.bufferC = bufferC
         self.bufferD = bufferD
+        self.semA=semA
+        self.semB=semB
+        self.semC=semC
+        self.semD=semD
 
     def proc(self, time, bufferA,bufferB,bufferC, bufferD, semA, semB, semC, semD):
-        
         for t in range(0,20):
             threading._sleep(1)
             if(t%2 == 0):
@@ -50,9 +53,6 @@ class P2:
                             pass
                 semA.release()
                 semC.release()
-
-            
-                
 
             else:
                 semB.acquire()
@@ -138,4 +138,3 @@ class P2:
             semB.release()
             semD.release()
 
-        

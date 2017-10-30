@@ -3,12 +3,15 @@ class planeZ:
         self.currentPos_Row = positionRow
         self.currentPos_Col = positionCol
 #Moves Row+=3 | Col+=(Col+1) % 7
+
+    flag = False
+
     def move(self, positionMatrix):
         lastPos_Col = (self.currentPos_Col-1) % 7
         self.subCheck(positionMatrix, self.currentPos_Row, lastPos_Col)
         #positionMatrix[self.currentPos_Row][lastPos_Col] = 0
-        
-        self.currentPos_Col = (self.currentPos_Col + 1) % 7
+        if self.flag is False:
+            self.currentPos_Col = (self.currentPos_Col + 1) % 7
         self.addCheck(positionMatrix)
         #positionMatrix[self.currentPos_Row][self.currentPos_Col] = 'Z'
     #    print("PLANE Z")
@@ -17,9 +20,9 @@ class planeZ:
 
     def getRow(self):
         return self.currentPos_Row
+
     def getCol(self):
         return self.currentPos_Col
-
 
     def addCheck(self, positionMatrix):
         if positionMatrix[self.currentPos_Row][self.currentPos_Col] == 0:
@@ -48,3 +51,6 @@ class planeZ:
         elif positionMatrix[lastPos_Row][lastPos_Col] == 'XYZ':
             positionMatrix[lastPos_Row][lastPos_Col] = 'XY'
             return
+
+    def stop(self):
+        self.flag = True

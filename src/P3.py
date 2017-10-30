@@ -9,9 +9,7 @@ class P3:
         time -= 1
         for t in range(0,21):
             threading._sleep(1)
-            
-                
-            
+
             if(t%2==1):
                 
                 semC.acquire()
@@ -51,15 +49,9 @@ class P3:
             else:
                 time += 1
 
-            
             self.lookahead(planeX, planeY, planeZ)
             print "X Row: ", planeZ.getRow()
             print "Y Col: ", planeZ.getCol()
-            
-            
-        
-  
-
 
     #Looks ahead 2 moves        
     def lookahead(self,planeX, planeY, planeZ):

@@ -3,11 +3,15 @@ class planeY:
         self.currentPos_Row = positionRow
         self.currentPos_Col = positionCol
 #Moves Row+=(Row+1) % 8 | Col+=2
+
+    flag = False
+
     def move(self, positionMatrix):
         lastPos_Row = (self.currentPos_Row-1)%8
         self.subCheck(positionMatrix, lastPos_Row, self.currentPos_Col)
         #positionMatrix[lastPos_Row][self.currentPos_Col] = 0
-        self.currentPos_Row = (self.currentPos_Row + 1) % 8
+        if self.flag is False:
+            self.currentPos_Row = (self.currentPos_Row + 1) % 8
         self.addCheck(positionMatrix)
         #positionMatrix[self.currentPos_Row][self.currentPos_Col] = 'Y'
      #   print("PLANE Y")
@@ -21,18 +25,18 @@ class planeY:
         return self.currentPos_Col
 
     def addCheck(self, positionMatrix):
-        if positionMatrix[self.currentPos_Row][self.currentPos_Col] == 0:
+       if positionMatrix[self.currentPos_Row][self.currentPos_Col] == 0:
             positionMatrix[self.currentPos_Row][self.currentPos_Col] =  'Y'
             return
-        elif positionMatrix[self.currentPos_Row][self.currentPos_Col] == 'X':
-            positionMatrix[self.currentPos_Row][self.currentPos_Col] = 'XY'
-            return
-        elif positionMatrix[self.currentPos_Row][self.currentPos_Col] == 'Z':
-            positionMatrix[self.currentPos_Row][self.currentPos_Col] = 'YZ'
-            return
-        elif positionMatrix[self.currentPos_Row][self.currentPos_Col] == 'XZ':
-            positionMatrix[self.currentPos_Row][self.currentPos_Col] = 'XYZ'
-            return
+       elif positionMatrix[self.currentPos_Row][self.currentPos_Col] == 'X':
+           positionMatrix[self.currentPos_Row][self.currentPos_Col] = 'XY'
+           return
+       elif positionMatrix[self.currentPos_Row][self.currentPos_Col] == 'Z':
+           positionMatrix[self.currentPos_Row][self.currentPos_Col] = 'YZ'
+           return
+       elif positionMatrix[self.currentPos_Row][self.currentPos_Col] == 'XZ':
+           positionMatrix[self.currentPos_Row][self.currentPos_Col] = 'XYZ'
+           return
 
     def subCheck(self, positionMatrix, lastPos_Row, lastPos_Col):
         if positionMatrix[lastPos_Row][lastPos_Col] == 'Y':
@@ -48,6 +52,5 @@ class planeY:
             positionMatrix[lastPos_Row][lastPos_Col] = 'XZ'
             return
 
-            
-        
-
+    def stop(self):
+       self.flag=True
