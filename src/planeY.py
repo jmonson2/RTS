@@ -1,3 +1,4 @@
+import time
 class planeY:
     def __init__(self, positionRow, positionCol):
         self.currentPos_Row = positionRow
@@ -11,7 +12,7 @@ class planeY:
         self.subCheck(positionMatrix, lastPos_Row, self.currentPos_Col)
         #positionMatrix[lastPos_Row][self.currentPos_Col] = 0
         if self.flag is False:
-            self.currentPos_Row = (self.currentPos_Row + 1) % 8
+            self.currentPos_Row = (self.currentPos_Row + 1) % 8 
         self.addCheck(positionMatrix)
         #positionMatrix[self.currentPos_Row][self.currentPos_Col] = 'Y'
      #   print("PLANE Y")
@@ -54,3 +55,8 @@ class planeY:
 
     def stop(self):
        self.flag=True
+
+    def start(self):
+        self.flag=False
+
+        

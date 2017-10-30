@@ -1,3 +1,4 @@
+import time
 class planeZ:
     def __init__(self, positionRow, positionCol):
         self.currentPos_Row = positionRow
@@ -14,7 +15,7 @@ class planeZ:
             self.currentPos_Col = (self.currentPos_Col + 1) % 7
         self.addCheck(positionMatrix)
         #positionMatrix[self.currentPos_Row][self.currentPos_Col] = 'Z'
-    #    print("PLANE Z")
+     #   print("PLANE Z")
      #   print("Row:", self.currentPos_Row)
      #   print("Column:", self.currentPos_Col)
 
@@ -54,3 +55,6 @@ class planeZ:
 
     def stop(self):
         self.flag = True
+
+    def start(self):
+        self.flag = False

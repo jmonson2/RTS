@@ -1,3 +1,4 @@
+import time
 class planeX:
     def __init__(self, positionRow, positionCol):
         self.currentPos_Row = positionRow
@@ -55,3 +56,6 @@ class planeX:
 
     def stop(self):
        self.flag=True
+
+    def start(self):
+        self.flag=False

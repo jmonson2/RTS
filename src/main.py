@@ -37,9 +37,9 @@ class main:
     p1 = P1.P1(0, plane_X, plane_Y, plane_Z, bufferA, bufferB, semA, semB)
     p2 = P2.P2(0, bufferC, bufferD, semA, semB, semC, semD)
     p3 = P3.P3(bufferC, bufferD, plane_X, plane_Y, plane_Z)
-    plane_X.stop()
-    plane_Y.stop()
-    plane_Z.stop()
+    #plane_X.stop()
+    #plane_Y.stop()
+    #plane_Z.stop()
 
     #thread class declarations
     i = 0
