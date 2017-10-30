@@ -83,6 +83,24 @@ class P3:
         zRow2 = zRow1
         zCol2 = (zCol1 + 1) % 7
         
+        if xRow1 == yRow1 and xCol1 == yCol1:
+            if xRow1 == zRow2 and xCol1 == zCol2:
+                plane_X.stop()
+            elif yRow1 == zRow2 and yCol1 == zCol2:
+                plane_Y.stop()
+
+        elif xRow1 == zRow1 and xCol1 == zCol1:
+            if xRow1 == yRow2 and xCol1 == yCol2:
+                plane_X.stop()
+            elif zRow1 == yRow2 and zCol1 == yCol2:
+                plane_Z.stop() 
+
+        elif yRow1 == zRow1 and yCol1 == zCol1:
+            if yRow1 == xRow2 and yCol1 == xCol2:
+                plane_Y.stop()
+            elif zRow1 == xRow2 and zCol1 == xCol2:
+                plane_Z.stop()
+        
         
         
     def getposX(self,buffer):
