@@ -19,16 +19,25 @@ class P1:
             
             if i % 2 == 0:
                 semB.acquire()
-                plane_X.move(bufferB)
-                plane_Y.move(bufferB)
-                plane_Z.move(bufferB)
+                if not plane_X.getflag():
+                    plane_X.move(bufferB)
+                if not plane_Y.getflag():
+                    plane_Y.move(bufferB)
+                if not plane_Z.getflag():
+                    plane_Z.move(bufferB)
                 semB.release()
             else:
                 semA.acquire()
-                plane_X.move(bufferA)
-                plane_Y.move(bufferA)
-                plane_Z.move(bufferA)
+                if not plane_X.getflag():
+                    plane_X.move(bufferA)
+                if not plane_Y.getflag():
+                    plane_Y.move(bufferA)
+                if not plane_Z.getflag():
+                    plane_Z.move(bufferA)
                 semA.release()
+            plane_X.start()
+            plane_Y.start()
+            plane_Z.start()
     
         threading._sleep(1)
 

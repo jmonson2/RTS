@@ -58,3 +58,5 @@ class planeZ:
 
     def start(self):
         self.flag = False
+    def getflag(self):
+        return self.flag
