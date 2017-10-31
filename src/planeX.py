@@ -9,8 +9,9 @@ class planeX:
     def move(self, positionMatrix):
         lastPos_Row = (self.currentPos_Row - 1) % 8
         lastPos_Col = (self.currentPos_Col - 1) % 7
+        self.subCheck(positionMatrix, lastPos_Row, lastPos_Col, self.currentPos_Row, self.currentPos_Col)
         if self.flag is False:
-            self.subCheck(positionMatrix, lastPos_Row, lastPos_Col)
+            #self.subCheck(positionMatrix, lastPos_Row, lastPos_Col)
             #positionMatrix[lastPos_Row][lastPos_Col] = 0
             self.currentPos_Row = (self.currentPos_Row + 1) % 8
             self.currentPos_Col = (self.currentPos_Col + 1) % 7
@@ -40,17 +41,30 @@ class planeX:
             positionMatrix[self.currentPos_Row][self.currentPos_Col] = 'XYZ'
             return
 
-    def subCheck(self, positionMatrix, lastPos_Row, lastPos_Col):
-       if positionMatrix[lastPos_Row][lastPos_Col] == 'X':
+    def subCheck(self, positionMatrix, lastPos_Row, lastPos_Col,currentPos_Row, currentPos_Col):
+        count = 0
+     
+        for i in range (0,7):
+          
+        
+            for j in range (0,6):
+
+                if (i != currentPos_Row or j != currentPos_Col) and positionMatrix[i][j] == 'X':
+                    positionMatrix[i][j] = 0
+                        
+
+        
+                
+        if positionMatrix[lastPos_Row][lastPos_Col] == 'X':
             positionMatrix[lastPos_Row][lastPos_Col] = 0
             return
-       elif positionMatrix[lastPos_Row][lastPos_Col] == 'XY':
+        elif positionMatrix[lastPos_Row][lastPos_Col] == 'XY':
             positionMatrix[lastPos_Row][lastPos_Col] = 'Y'
             return
-       elif positionMatrix[lastPos_Row][lastPos_Col] == 'XZ':
+        elif positionMatrix[lastPos_Row][lastPos_Col] == 'XZ':
             positionMatrix[lastPos_Row][lastPos_Col] = 'Z'
             return
-       elif positionMatrix[lastPos_Row][lastPos_Col] == 'XYZ':
+        elif positionMatrix[lastPos_Row][lastPos_Col] == 'XYZ':
             positionMatrix[lastPos_Row][lastPos_Col] = 'YZ'
             return
 

@@ -51,13 +51,15 @@ class P3:
                 time += 1
 
             self.lookahead(planeX, planeY, planeZ)
-            print "TIME:     ", time
+            #print "TIME:     ", time
             #print bufferD
             #print "X: ", planeX.getRow(), ", ", planeX.getCol()
             #print "Y: ", planeY.getRow(), ", ", planeY.getCol()
             #print "Z: ", planeZ.getRow(), ", ", planeZ.getCol()
-            
-         
+            #print "BUFFERC :", bufferC
+           # print "BUFFERD :", bufferD
+            #threading._sleep(1)
+        
 
     #Looks ahead 2 moves        
     def lookahead(self,planeX, planeY, planeZ):
@@ -91,7 +93,7 @@ class P3:
         l_xFlag = False
         l_yFlag = False
         l_zFlag = False
-        
+        #Need to add code to check if xFlag is stopped so you don't stop y flag
         if xRow1 == yRow1 and xCol1 == yCol1:
             if xRow2 == zRow2 and xCol2 == zCol2:
                 
@@ -182,6 +184,7 @@ class P3:
                 print "Stopped planeZ"
                 #threading._sleep(1)
                 #planeZ.start() 
+            
             else:
                 
                 planeY.stop() 

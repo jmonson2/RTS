@@ -9,10 +9,11 @@ class planeY:
 
     def move(self, positionMatrix):
         lastPos_Row = (self.currentPos_Row-1)%8
-        self.subCheck(positionMatrix, lastPos_Row, self.currentPos_Col)
+        self.subCheck(positionMatrix, lastPos_Row, self.currentPos_Col, self.currentPos_Row, self.currentPos_Col)
         #positionMatrix[lastPos_Row][self.currentPos_Col] = 0
         if self.flag is False:
-            self.currentPos_Row = (self.currentPos_Row + 1) % 8 
+            self.currentPos_Row = (self.currentPos_Row + 1) % 8
+            self.subCheck(positionMatrix, lastPos_Row, self.currentPos_Col, self.currentPos_Row, self.currentPos_Col) 
         self.addCheck(positionMatrix)
         #positionMatrix[self.currentPos_Row][self.currentPos_Col] = 'Y'
      #   print("PLANE Y")
@@ -39,7 +40,20 @@ class planeY:
            positionMatrix[self.currentPos_Row][self.currentPos_Col] = 'XYZ'
            return
 
-    def subCheck(self, positionMatrix, lastPos_Row, lastPos_Col):
+    def subCheck(self, positionMatrix, lastPos_Row, lastPos_Col, currentPos_Row, currentPos_Col):
+        #temprow
+        #tempcol
+        count = 0
+        for i in range (0,7):
+          
+        
+            for j in range (0,6):
+
+                if (i != currentPos_Row or j != currentPos_Col) and positionMatrix[i][j] == 'Y':
+                    positionMatrix[i][j] = 0
+       
+        
+                
         if positionMatrix[lastPos_Row][lastPos_Col] == 'Y':
             positionMatrix[lastPos_Row][lastPos_Col] = 0
             return

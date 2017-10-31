@@ -39,5 +39,5 @@ class P1:
             plane_Y.start()
             plane_Z.start()
     
-        threading._sleep(1)
+      
 

@@ -9,7 +9,7 @@ class planeZ:
 
     def move(self, positionMatrix):
         lastPos_Col = (self.currentPos_Col-1) % 7
-        self.subCheck(positionMatrix, self.currentPos_Row, lastPos_Col)
+        self.subCheck(positionMatrix, self.currentPos_Row, lastPos_Col, self.currentPos_Row, self.currentPos_Col)
         #positionMatrix[self.currentPos_Row][lastPos_Col] = 0
         if self.flag is False:
             self.currentPos_Col = (self.currentPos_Col + 1) % 7
@@ -39,7 +39,19 @@ class planeZ:
             positionMatrix[self.currentPos_Row][self.currentPos_Col] = 'XYZ'
             return
 
-    def subCheck(self, positionMatrix, lastPos_Row, lastPos_Col):
+    def subCheck(self, positionMatrix, lastPos_Row, lastPos_Col,currentPos_Row, currentPos_Col):
+        count = 0
+        
+        for i in range (0,7):
+          
+        
+            for j in range (0,6):
+
+                if (i != currentPos_Row or j != currentPos_Col) and positionMatrix[i][j] == 'Z':
+                    positionMatrix[i][j] = 0
+
+        
+                
         if positionMatrix[lastPos_Row][lastPos_Col] == 'Z':
             positionMatrix[lastPos_Row][lastPos_Col] = 0
             return

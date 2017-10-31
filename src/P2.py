@@ -92,6 +92,7 @@ class P2:
                             bufferD[2][2] = j
                         else:
                             pass
+                
                 semB.release()
                 semD.release()
             
@@ -138,3 +139,4 @@ class P2:
             semB.release()
             semD.release()
 
+        
