@@ -3,6 +3,7 @@ class P3:
     def __init__(self, bufferC, bufferD, planeX, planeY,planeZ):
         self.bufferC = bufferC
         self.bufferD = bufferD
+    
 
     def check(self, time, bufferC, bufferD, semC, semD,planeX,planeY,planeZ):
         
@@ -51,9 +52,10 @@ class P3:
 
             self.lookahead(planeX, planeY, planeZ)
             print "TIME:     ", time
-            print "X: ", planeX.getRow(), ", ", planeX.getCol()
-            print "Y: ", planeY.getRow(), ", ", planeY.getCol()
-            print "Z: ", planeZ.getRow(), ", ", planeZ.getCol()
+            #print bufferD
+            #print "X: ", planeX.getRow(), ", ", planeX.getCol()
+            #print "Y: ", planeY.getRow(), ", ", planeY.getCol()
+            #print "Z: ", planeZ.getRow(), ", ", planeZ.getCol()
             
          
 
@@ -86,59 +88,108 @@ class P3:
         yCol2 = yCol1
         zRow2 = zRow1
         zCol2 = (zCol1 + 1) % 7
+        l_xFlag = False
+        l_yFlag = False
+        l_zFlag = False
         
         if xRow1 == yRow1 and xCol1 == yCol1:
             if xRow2 == zRow2 and xCol2 == zCol2:
+                
                 planeX.stop()
                 print "Stopped plane X"
                 #threading._sleep(1)
                 #planeX.start()
                 
             elif yRow2 == zRow2 and yCol2 == zCol2:
+                
                 planeY.stop()
                 print "Stopped plane Y"
                 #threading._sleep(1)
                 #planeY.start()
             else:
+                
                 planeX.stop()
                 print "Stopped plane X"
                # threading._sleep(1)
                 #planeX.start()
-
-        elif xRow1 == zRow1 and xCol1 == zCol1:
+        if planeX.getflag() != l_xFlag:
+            xRow2 = xRow1
+            xRow1 = planeX.getRow()
+            xCol2 = xCol1
+            xCol1 = planeX.getCol()
+            l_xFlag = True #F->T
+        if planeY.getflag() != l_yFlag:
+            yRow2 = yRow1
+            yRow1 = planeY.getRow()
+            yCol2 = yCol1
+            yCol1 = planeY.getCol()
+            l_yFlag = True
+        if planeZ.getflag() != l_zFlag:
+            zRow2 = zRow1
+            zRow1 = planeZ.getRow()
+            zCol2 = zCol1
+            zCol1 = planeZ.getCol()
+            l_zFlag = True
+            
+        if xRow1 == zRow1 and xCol1 == zCol1:
             if xRow2 == yRow2 and xCol2 == yCol2:
+            
                 planeX.stop()
                 print "Stopped plane X"
                 #threading._sleep(1)
                 #planeX.start()
             elif zRow2 == yRow2 and zCol2 == yCol2:
+                
                 planeZ.stop() 
                 print "Stopped planeZ"
                 #threading._sleep(1)
                 #planeZ.start()
             else:   
+                
                 planeZ.stop()
                 print "Stopped planeZ"
                 #threading._sleep(1)
                 #planeZ.start()
-
-        elif yRow1 == zRow1 and yCol1 == zCol1:
+        if planeX.getflag() != l_xFlag:
+            xRow2 = xRow1
+            xRow1 = planeX.getRow()
+            xCol2 = xCol1
+            xCol1 = planeX.getCol()
+            l_xFlag = True #F->T
+        if planeY.getflag() != l_yFlag:
+            yRow2 = yRow1
+            yRow1 = planeY.getRow()
+            yCol2 = yCol1
+            yCol1 = planeY.getCol()
+            l_yFlag = True
+        if planeZ.getflag() != l_zFlag:
+            zRow2 = zRow1
+            zRow1 = planeZ.getRow()
+            zCol2 = zCol1
+            zCol1 = planeZ.getCol()
+            l_zFlag = True
+        if yRow1 == zRow1 and yCol1 == zCol1:
             if yRow2 == xRow2 and yCol2 == xCol2:
+                
                 planeY.stop()
                 print "Stopped planeY"
                 #threading._sleep(1)
                 #planeY.start()
             elif zRow2 == xRow2 and zCol2 == xCol2:
+                
                 planeZ.stop()
 
                 print "Stopped planeZ"
                 #threading._sleep(1)
                 #planeZ.start() 
             else:
+                
                 planeY.stop() 
                 print "Stopped planeY"
                 #threading._sleep(1)
                 #planeY.start()    
+       
+    
         
         
         
@@ -148,6 +199,24 @@ class P3:
         return str(buffer[1][1]) + str(buffer[2][1])
     def getposZ(self,buffer):
         return str(buffer[1][2]) + str(buffer[2][2])
+    def stopX(self):
+        self.xRow2 = self.xRow1
+        self.xRow1 = planeX.getRow()
+        self.xCol2 = self.xCol1
+        self.xCol1 = planeX.getCol()
+        planeX.stop()
+    def stopY(self):
+        self.yRow2 = self.yRow1
+        self.yRow1 = planeY.getRow()
+        self.yCol2 = self.yCol1
+        self.yCol1 = planeY.getCol()
+        planeY.stop()
+    def stopZ(self):
+        self.zRow2 = self.zRow1
+        self.zRow1 = planeZ.getRow()
+        self.zCol2 = self.zCol1
+        self.zCol1 = planeZ.getCol()
+        planeZ.stop()
 
     
 
