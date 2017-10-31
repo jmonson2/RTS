@@ -50,8 +50,12 @@ class P3:
                 time += 1
 
             self.lookahead(planeX, planeY, planeZ)
-            print "X Row: ", planeZ.getRow()
-            print "Y Col: ", planeZ.getCol()
+            print "TIME:     ", time
+            print "X: ", planeX.getRow(), ", ", planeX.getCol()
+            print "Y: ", planeY.getRow(), ", ", planeY.getCol()
+            print "Z: ", planeZ.getRow(), ", ", planeZ.getCol()
+            
+         
 
     #Looks ahead 2 moves        
     def lookahead(self,planeX, planeY, planeZ):
@@ -84,46 +88,57 @@ class P3:
         zCol2 = (zCol1 + 1) % 7
         
         if xRow1 == yRow1 and xCol1 == yCol1:
-            if xRow1 == zRow2 and xCol1 == zCol2:
+            if xRow2 == zRow2 and xCol2 == zCol2:
                 planeX.stop()
-                threading._sleep(1)
-                planeX.start()
-            elif yRow1 == zRow2 and yCol1 == zCol2:
+                print "Stopped plane X"
+                #threading._sleep(1)
+                #planeX.start()
+                
+            elif yRow2 == zRow2 and yCol2 == zCol2:
                 planeY.stop()
-                threading._sleep(1)
-                planeY.start()
+                print "Stopped plane Y"
+                #threading._sleep(1)
+                #planeY.start()
             else:
                 planeX.stop()
-                threading._sleep(1)
-                planeX.start()
+                print "Stopped plane X"
+               # threading._sleep(1)
+                #planeX.start()
 
         elif xRow1 == zRow1 and xCol1 == zCol1:
-            if xRow1 == yRow2 and xCol1 == yCol2:
+            if xRow2 == yRow2 and xCol2 == yCol2:
                 planeX.stop()
-                threading._sleep(1)
-                planeX.start()
-            elif zRow1 == yRow2 and zCol1 == yCol2:
+                print "Stopped plane X"
+                #threading._sleep(1)
+                #planeX.start()
+            elif zRow2 == yRow2 and zCol2 == yCol2:
                 planeZ.stop() 
-                threading._sleep(1)
-                planeZ.start()
+                print "Stopped planeZ"
+                #threading._sleep(1)
+                #planeZ.start()
             else:   
                 planeZ.stop()
-                threading._sleep(1)
-                planeZ.start()
+                print "Stopped planeZ"
+                #threading._sleep(1)
+                #planeZ.start()
 
         elif yRow1 == zRow1 and yCol1 == zCol1:
-            if yRow1 == xRow2 and yCol1 == xCol2:
+            if yRow2 == xRow2 and yCol2 == xCol2:
                 planeY.stop()
-                threading._sleep(1)
-                planeY.start()
-            elif zRow1 == xRow2 and zCol1 == xCol2:
+                print "Stopped planeY"
+                #threading._sleep(1)
+                #planeY.start()
+            elif zRow2 == xRow2 and zCol2 == xCol2:
                 planeZ.stop()
-                threading._sleep(1)
-                planeZ.start() 
+
+                print "Stopped planeZ"
+                #threading._sleep(1)
+                #planeZ.start() 
             else:
                 planeY.stop() 
-                threading._sleep(1)
-                planeY.start()    
+                print "Stopped planeY"
+                #threading._sleep(1)
+                #planeY.start()    
         
         
         
