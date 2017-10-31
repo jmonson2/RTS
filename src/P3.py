@@ -146,8 +146,8 @@ class P3:
                 #planeZ.start()
             else:   
                 
-                planeZ.stop()
-                print "Stopped planeZ"
+                planeX.stop()
+                print "Stopped planeX"
                 #threading._sleep(1)
                 #planeZ.start()
         if planeX.getflag() != l_xFlag:
