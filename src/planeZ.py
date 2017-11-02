@@ -8,12 +8,14 @@ class planeZ:
     flag = False
 
     def move(self, positionMatrix):
-        lastPos_Col = (self.currentPos_Col-1) % 7
+        if self.flag is False: 
+            lastPos_Col = (self.currentPos_Col-1) % 7
         self.subCheck(positionMatrix, self.currentPos_Row, lastPos_Col, self.currentPos_Row, self.currentPos_Col)
         #positionMatrix[self.currentPos_Row][lastPos_Col] = 0
         if self.flag is False:
             self.currentPos_Col = (self.currentPos_Col + 1) % 7
         self.addCheck(positionMatrix)
+        self.subCheck(positionMatrix, self.currentPos_Row, lastPos_Col, self.currentPos_Row, self.currentPos_Col)
         #positionMatrix[self.currentPos_Row][self.currentPos_Col] = 'Z'
      #   print("PLANE Z")
      #   print("Row:", self.currentPos_Row)

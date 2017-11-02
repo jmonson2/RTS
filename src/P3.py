@@ -5,12 +5,11 @@ class P3:
         self.bufferD = bufferD
     
 
-    def check(self, time, bufferC, bufferD, semC, semD,planeX,planeY,planeZ):
+    def check(self, time, bufferC, bufferD, semC, semD,planeX,planeY,planeZ, semA, semB, interval, itterations):
         
         time -= 1
-        for t in range(0,21):
-            threading._sleep(1)
-
+        for t in range(0,itterations+1):
+            threading._sleep(interval)
             if(t%2==1):
                 
                 semC.acquire()
@@ -49,8 +48,15 @@ class P3:
                 semD.release()
             else:
                 time += 1
-
-            self.lookahead(planeX, planeY, planeZ)
+            semA.acquire()
+            semB.acquire()
+            semC.acquire()
+            semD.acquire()
+            self.lookahead(planeX, planeY, planeZ, time+2)
+            semA.release()
+            semB.release()
+            semC.release()
+            semD.release()
             #print "TIME:     ", time
             #print bufferD
             #print "X: ", planeX.getRow(), ", ", planeX.getCol()
@@ -62,7 +68,7 @@ class P3:
         
 
     #Looks ahead 2 moves        
-    def lookahead(self,planeX, planeY, planeZ):
+    def lookahead(self,planeX, planeY, planeZ,t):
         
         #You will need to stop in this method. Find a way to cease threading on P1 and P2 (maybe acquire semaphores?)
         #PLANEX MOVEMENT
@@ -98,20 +104,19 @@ class P3:
             if xRow2 == zRow2 and xCol2 == zCol2:
                 
                 planeX.stop()
-                print "Stopped plane X"
+                print "Future Collision detected between X and Y at time ", t,". Stopped plane X"
                 #threading._sleep(1)
                 #planeX.start()
                 
-            elif yRow2 == zRow2 and yCol2 == zCol2:
+            if yRow2 == zRow2 and yCol2 == zCol2:
                 
                 planeY.stop()
-                print "Stopped plane Y"
+                print "Future collision detected between X and Y at time ", t,". Stopped plane Y"
                 #threading._sleep(1)
                 #planeY.start()
             else:
-                
                 planeX.stop()
-                print "Stopped plane X"
+                print "Future collision detected between X and Y at time ", t,". Stopped plane X"
                # threading._sleep(1)
                 #planeX.start()
         if planeX.getflag() != l_xFlag:
@@ -137,19 +142,19 @@ class P3:
             if xRow2 == yRow2 and xCol2 == yCol2:
             
                 planeX.stop()
-                print "Stopped plane X"
+                print "Future collision detected between X and Z at time ",t,". Stopped plane X"
                 #threading._sleep(1)
                 #planeX.start()
-            elif zRow2 == yRow2 and zCol2 == yCol2:
+            if zRow2 == yRow2 and zCol2 == yCol2:
                 
                 planeZ.stop() 
-                print "Stopped planeZ"
+                print "Future collision detected between X and Z at time ,",t,". Stopped plane Z"
                 #threading._sleep(1)
                 #planeZ.start()
             else:   
                 
                 planeX.stop()
-                print "Stopped planeX"
+                print "Future collision detected between X and z at time ,",t,". Stopped plane X"
                 #threading._sleep(1)
                 #planeZ.start()
         if planeX.getflag() != l_xFlag:
@@ -174,25 +179,26 @@ class P3:
             if yRow2 == xRow2 and yCol2 == xCol2:
                 
                 planeY.stop()
-                print "Stopped planeY"
+                print "Future collision detected between Y and Z at time ",t,". Stopped plane Y"
                 #threading._sleep(1)
                 #planeY.start()
-            elif zRow2 == xRow2 and zCol2 == xCol2:
+            if zRow2 == xRow2 and zCol2 == xCol2:
                 
                 planeZ.stop()
 
-                print "Stopped planeZ"
+                print "Future collision detected between Y and Z at time ",t,". Stopped plane Z"
                 #threading._sleep(1)
                 #planeZ.start() 
-            
+           
             else:
                 
                 planeY.stop() 
-                print "Stopped planeY"
+                
+                print "Future collision detected between Y and Z at time ",t,". Stopped plane Y"
                 #threading._sleep(1)
                 #planeY.start()    
        
-    
+        
         
         
         
