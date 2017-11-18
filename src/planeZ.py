@@ -1,4 +1,5 @@
 import time
+import random
 class planeZ:
     def __init__(self, positionRow, positionCol):
         self.currentPos_Row = positionRow
@@ -11,16 +12,12 @@ class planeZ:
         if self.flag is False: 
             lastPos_Col = (self.currentPos_Col-1) % 7
         self.subCheck(positionMatrix, self.currentPos_Row, lastPos_Col, self.currentPos_Row, self.currentPos_Col)
-        #positionMatrix[self.currentPos_Row][lastPos_Col] = 0
+
         if self.flag is False:
             self.currentPos_Col = (self.currentPos_Col + 1) % 7
         self.addCheck(positionMatrix)
         self.subCheck(positionMatrix, self.currentPos_Row, lastPos_Col, self.currentPos_Row, self.currentPos_Col)
-        #positionMatrix[self.currentPos_Row][self.currentPos_Col] = 'Z'
-     #   print("PLANE Z")
-     #   print("Row:", self.currentPos_Row)
-     #   print("Column:", self.currentPos_Col)
-
+     
     def getRow(self):
         return self.currentPos_Row
 
@@ -68,7 +65,10 @@ class planeZ:
             return
 
     def stop(self):
-        self.flag = True
+        if random.randint(0,99) >= 0:
+            self.flag = True
+        else:
+            print "Failed to stop Z"
 
     def start(self):
         self.flag = False

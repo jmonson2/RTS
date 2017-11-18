@@ -1,3 +1,6 @@
+#Group Members: Johnathon Monson, Armando Mercado, Ryan Sparks
+#Most new code is in P3
+#Added ability to define iteration count as well as movement delays. Setting movement delays too low (<.1) may cause some synchronization issues and will allow collisions to occur.
 import threading
 import time
 import planeX
@@ -30,9 +33,7 @@ class main:
     semB = threading.Semaphore()
     semC = threading.Semaphore()
     semD = threading.Semaphore()
-    lockP1 = threading.Semaphore()
-    lockP2 = threading.Semaphore()
-    lockp3 = threading.Semaphore()
+   
 
     plane_X = planeX.planeX(0,0)
     plane_Y = planeY.planeY(0,2)
@@ -41,15 +42,13 @@ class main:
     p1 = P1.P1(0, plane_X, plane_Y, plane_Z, bufferA, bufferB, semA, semB)
     p2 = P2.P2(0, bufferC, bufferD, semA, semB, semC, semD)
     p3 = P3.P3(bufferC, bufferD, plane_X, plane_Y, plane_Z)
-    #plane_X.stop()
-    #plane_Y.stop()
-    #plane_Z.stop()
+    
 
     #thread class declarations
     i = 0
-    t1 = threading.Thread(target=p1.proc1,args=(i, plane_X, plane_Y, plane_Z, bufferA, bufferB, semA, semB, interval, itterations))#,lockP1, lockP2, lockP3))# lockP1, lockP2, lockP3))
-    t2 = threading.Thread(target=p2.proc, args=(i,bufferA,bufferB, bufferC, bufferD, semA, semB, semC, semD, interval, itterations)) #lockP1, lockP2, lockP3))
-    t3 = threading.Thread(target=p3.check, args=(i, bufferC, bufferD, semC, semD,plane_X,plane_Y,plane_Z, semA, semB, interval, itterations)) #lockP1, lockP2, lockP3))
+    t1 = threading.Thread(target=p1.proc1,args=(i, plane_X, plane_Y, plane_Z, bufferA, bufferB, semA, semB,semC, semD, interval, itterations))
+    t2 = threading.Thread(target=p2.proc, args=(i,bufferA,bufferB, bufferC, bufferD, semA, semB, semC, semD, interval, itterations)) 
+    t3 = threading.Thread(target=p3.check, args=(i, bufferC, bufferD, semC, semD,plane_X,plane_Y,plane_Z, semA, semB, interval, itterations))
    
     t1.start()
 

@@ -1,4 +1,5 @@
 import time
+import random
 class planeY:
     def __init__(self, positionRow, positionCol):
         self.currentPos_Row = positionRow
@@ -11,16 +12,12 @@ class planeY:
         if self.flag is False:
             lastPos_Row = (self.currentPos_Row-1)%8
         self.subCheck(positionMatrix, lastPos_Row, self.currentPos_Col, self.currentPos_Row, self.currentPos_Col)
-        #positionMatrix[lastPos_Row][self.currentPos_Col] = 0
+        
         if self.flag is False:
             self.currentPos_Row = (self.currentPos_Row + 1) % 8
-            self.subCheck(positionMatrix, (lastPos_Row-1)%8, self.currentPos_Col, self.currentPos_Row, self.currentPos_Col) 
+        self.subCheck(positionMatrix, (lastPos_Row-1)%8, self.currentPos_Col, self.currentPos_Row, self.currentPos_Col) 
         self.addCheck(positionMatrix)
-        #self.subCheck(positionMatrix, lastPos_Row, self.currentPos_Col, self.currentPos_Row, self.currentPos_Col) 
-        #positionMatrix[self.currentPos_Row][self.currentPos_Col] = 'Y'
-     #   print("PLANE Y")
-     #   print("Row:", self.currentPos_Row)
-     #   print("Column:", self.currentPos_Col)
+        
         
 
     def getRow(self):
@@ -71,11 +68,16 @@ class planeY:
             return
 
     def stop(self):
-       self.flag=True
+        if random.randint(0,99) > 5:
+            self.flag=True
+        else:
+            print "failed to stop Y"
+       
 
     def start(self):
         self.flag=False
     def getflag(self):
         return self.flag
+    
 
         

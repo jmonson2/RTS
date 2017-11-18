@@ -4,11 +4,7 @@ class P2:
         self.time = time
         self.bufferC = bufferC
         self.bufferD = bufferD
-        #self.semA=semA
-        #self.semB=semB
-        #self.semC=semC
-        #self.semD=semD
-
+       
     def proc(self, time, bufferA,bufferB,bufferC, bufferD, semA, semB, semC, semD, interval, itterations):
         for t in range(0,itterations):
             threading._sleep(interval)
@@ -95,8 +91,7 @@ class P2:
                 
                 semB.release()
                 semD.release()
-            #print bufferB
-            #print bufferA
+            
             
 
     def proc2BD(self, time, bufferB, bufferD, semB, semD):

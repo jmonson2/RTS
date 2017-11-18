@@ -8,14 +8,13 @@ class P1:
         self.plane_X = planeX
         self.plane_Y = planeY
         self.plane_Z = planeZ
-        #self.semA = semA#threading.Semaphore()
-        #self.semB = semB#threading.Semaphore()
+       
 
 
-    def proc1(self,time,plane_X,plane_Y,plane_Z,bufferA,bufferB, semA, semB, interval, itterations):
-        #self.lockP1.acquire()
-        #self.lockP2.acquire()
-        #self.lockP3.acquire()
+    def proc1(self,time,plane_X,plane_Y,plane_Z,bufferA,bufferB, semA, semB,semC, semD, interval, itterations):
+        
+        semC.acquire()
+        semD.acquire()
         i = time
         for i in range(0,itterations):
             threading._sleep(interval)
@@ -38,10 +37,12 @@ class P1:
                 if not plane_Z.getflag():
                     plane_Z.move(bufferA)
                 semA.release()
-            #threading._sleep(1)
+            
             plane_X.start()
             plane_Y.start()
             plane_Z.start()
+            semC.release()
+            semD.release()
             
     
       
