@@ -5,10 +5,12 @@
 import threading
 import random
 class P3:
-    def __init__(self, bufferC, bufferD, planeX, planeY,planeZ):
+    def __init__(self, bufferC, bufferD, planeX, planeY,planeZ,zx1,yy1):
         self.bufferC = bufferC
         self.bufferD = bufferD
         self.f_Collision = False
+        self.zx1=zx1
+        self.yy1=yy1
     
 
     def check(self, time, bufferC, bufferD, semC, semD,planeX,planeY,planeZ, semA, semB, interval, itterations):
@@ -91,8 +93,8 @@ class P3:
         xRow1 = (planeX.getRow() + 1) % 8
         xCol1 = (planeX.getCol() + 1) % 7
         yRow1 = (planeY.getRow() + 1) % 8
-        yCol1 = 2
-        zRow1 = 3
+        yCol1 = self.yy1
+        zRow1 = self.zx1
         zCol1 = (planeZ.getCol() + 1) % 7
        
         xRow2 = (xRow1 + 1) % 8
