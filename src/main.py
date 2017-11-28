@@ -3,7 +3,6 @@
 #Added ability to define iteration count as well as movement delays. Setting movement delays too low (<.1) may cause some synchronization issues and will allow collisions to occur.
 import threading
 import time
-import random
 import planeX
 import planeY
 import planeZ
@@ -35,6 +34,7 @@ class main:
     bufferA[bufferAXVarX][bufferAXVarY] = 'X'
     bufferA[bufferAYVarX][bufferAYVarY] = 'Y'
     bufferA[bufferAZVarX][bufferAZVarY] = 'Z'
+
     bufferB = [[0 for x in range(columns)] for y in range(rows)]
     bufferC = [[0 for x in range(3)] for y in range (3)]
     bufferD = [[0 for x in range(3)] for y in range (3)]
@@ -52,9 +52,9 @@ class main:
     semD = threading.Semaphore()
    
 
-    plane_X = planeX.planeX(bufferAXVarX,bufferAXVarY)
-    plane_Y = planeY.planeY(bufferAYVarX,bufferAYVarY)
-    plane_Z = planeZ.planeZ(bufferAZVarX,bufferAZVarY)
+    plane_X = planeX.planeX(0,0)
+    plane_Y = planeY.planeY(0,2)
+    plane_Z = planeZ.planeZ(3,6)
 
     p1 = P1.P1(0, plane_X, plane_Y, plane_Z, bufferA, bufferB, semA, semB)
     p2 = P2.P2(0, bufferC, bufferD, semA, semB, semC, semD)

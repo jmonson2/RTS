@@ -10,16 +10,13 @@ class planeY:
 
     def move(self, positionMatrix):
         if self.flag is False:
-            lastPos_Row = 0
-            lastPos_Col = 0
-            self.changeDir(lastPos_Row, lastPos_Col)
-        #    lastPos_Row = (self.currentPos_Row-1)%8
-            self.subCheck(positionMatrix, lastPos_Row, self.currentPos_Col, self.currentPos_Row, self.currentPos_Col)
+            lastPos_Row = (self.currentPos_Row-1)%8
+        self.subCheck(positionMatrix, lastPos_Row, self.currentPos_Col, self.currentPos_Row, self.currentPos_Col)
         
-        #if self.flag is False:
-        #    self.currentPos_Row = (self.currentPos_Row + 1) % 8
-            self.subCheck(positionMatrix, (lastPos_Row-1)%8, self.currentPos_Col, self.currentPos_Row, self.currentPos_Col)
-            self.addCheck(positionMatrix)
+        if self.flag is False:
+            self.currentPos_Row = (self.currentPos_Row + 1) % 8
+        self.subCheck(positionMatrix, (lastPos_Row-1)%8, self.currentPos_Col, self.currentPos_Row, self.currentPos_Col) 
+        self.addCheck(positionMatrix)
         
         
 
@@ -75,22 +72,7 @@ class planeY:
             self.flag=True
         else:
             print "failed to stop Y"
-
-    def changeDir(self,lastPos_Row,lastPos_Col):
-        #0=up,1=down,2=left,3=right
-        dir=random.randint(0,3)
-        if dir==0:
-            lastPos_Col = (self.currentPos_Col - 1) % 7
-            self.currentPos_Col = (self.currentPos_Col + 1) % 7
-        elif dir==1:
-            lastPos_Col = (self.currentPos_Col + 1) % 7
-            self.currentPos_Col = (self.currentPos_Col - 1) % 7
-        elif dir==2:
-            lastPos_Row = (self.currentPos_Row - 1) % 8
-            self.currentPos_Row = (self.currentPos_Row + 1) % 8
-        elif dir==3:
-            lastPos_Row = (self.currentPos_Row + 1) % 8
-            self.currentPos_Row = (self.currentPos_Row - 1) % 8
+       
 
     def start(self):
         self.flag=False
