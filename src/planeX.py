@@ -90,6 +90,8 @@ class planeX:
             lastPos_Row = (self.currentPos_Row + 1) % 8
             self.currentPos_Row = (self.currentPos_Row - 1) % 8
 
+
+
     def start(self):
         self.flag=False
     def getflag(self):

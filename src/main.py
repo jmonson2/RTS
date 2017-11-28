@@ -24,6 +24,13 @@ class main:
     bufferAYVarY = random.randint(0,columns-1)
     bufferAZVarX = random.randint(0, rows-1)
     bufferAZVarY = random.randint(0, columns-1)
+    if((bufferAXVarX==bufferAYVarX or bufferAXVarX==bufferAZVarX or bufferAYVarX==bufferAZVarX) and (bufferAXVarY==bufferAYVarY or bufferAXVarY==bufferAZVarY or bufferAYVarX==bufferAZVarX)):#generate again if equal
+        bufferAXVarX = random.randint(0, rows - 1)
+        bufferAXVarY = random.randint(0, columns - 1)
+        bufferAYVarX = random.randint(0, rows - 1)
+        bufferAYVarY = random.randint(0, columns - 1)
+        bufferAZVarX = random.randint(0, rows - 1)
+        bufferAZVarY = random.randint(0, columns - 1)
 
     bufferA[bufferAXVarX][bufferAXVarY] = 'X'
     bufferA[bufferAYVarX][bufferAYVarY] = 'Y'
