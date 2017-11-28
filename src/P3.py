@@ -15,6 +15,7 @@ class P3:
         
         
         time -= 1
+        self.findSecondPosition(planeX, planeY, planeZ, time+2)
         for t in range(0,itterations+1):
 
             threading._sleep(interval)
@@ -79,15 +80,70 @@ class P3:
             semD.release()
             if self.f_Collision:
                 print "COMPLETE SYSTEM FAILURE"
-            print "X ROW:",planeX.getRow()
-            print "X COL:",planeX.getCol()
-            print "Y ROW:",planeY.getRow()
-            print "Y COL: ",planeY.getCol()
-            print "Z ROW: ",planeZ.getRow()
-            print "Z COL: ",planeZ.getCol()
+            #print "X ROW:",planeX.getRow()
+            #print "X COL:",planeX.getCol()
+            #print "Y ROW:",planeY.getRow()
+            #print "Y COL: ",planeY.getCol()
+            #print "Z ROW: ",planeZ.getRow()
+            #print "Z COL: ",planeZ.getCol()
             
-        
+    def findSecondPosition(self,planeX, planeY, planeZ, t):
+        xRow1 = (planeX.getRow() + 1) % 8
+        xCol1 = (planeX.getCol() + 1) % 7
+        yRow1 = (planeY.getRow() + 1) % 8
+        yCol1 = 2
+        zRow1 = 3
+        zCol1 = (planeZ.getCol() + 1) % 7
+       
+        xRow2 = (xRow1 + 1) % 8
+        xCol2 = (xCol1 + 1) % 7
+        yRow2 = (yRow1 + 1) % 8
+        yCol2 = yCol1
+        zRow2 = zRow1
+        zCol2 = (zCol1 + 1) % 7
+        l_xFlag = False
+        l_yFlag = False
+        l_zFlag = False
 
+        if (xRow2 < xRow1 and xCol2 < xCol1):
+            print "X starting at (", xRow1, ", ", xCol1, ") with initial velocity Southwest"
+        elif (xRow2 < xRow1):
+            print "X starting at (", xRow1, ", ", xCol1, ") with initial velocity West"
+        elif (xCol2 < xCol1):
+            print "X starting at (", xRow1, ", ", xCol1, ") with initial velocity South"
+        elif (xRow2 > xRow1 and xCol2 > xCol1):
+            print "X starting at (", xRow1, ", ", xCol1, ") with initial velocity Northeast"
+        elif (xRow2 > xRow1):
+            print "X starting at (", xRow1, ", ", xCol1, ") with initial velocity East"
+        else:
+            print "X starting at (", xRow1, ", ", xCol1, ") with initial velocity North"
+
+        if (yRow2 < yRow1 and yCol2 < yCol1):
+            print "Y starting at (", yRow1, ", ", yCol1, ") with initial velocity Southwest"
+        elif (yRow2 < yRow1):
+            print "Y starting at (", yRow1, ", ", yCol1, ") with initial velocity West"
+        elif (yCol2 < yCol1):
+            print "Y starting at (", yRow1, ", ", yCol1, ") with initial velocity South"
+        elif (yRow2 > yRow1 and yCol2 > yCol1):
+            print "Y starting at (", yRow1, ", ", yCol1, ") with initial velocity Northeast"
+        elif (yRow2 > yRow1):
+            print "Y starting at (", yRow1, ", ", yCol1, ") with initial velocity East"
+        else:
+            print "Y starting at (", yRow1, ", ", yCol1, ") with initial velocity North"
+
+        if (zRow2 < zRow1 and zCol2 < zCol1):
+            print "Z starting at (", zRow1, ", ", zCol1, ") with initial velocity Southwest"
+        elif (zRow2 < zRow1):
+            print "Z starting at (", zRow1, ", ", zCol1, ") with initial velocity West"
+        elif (zCol2 < zCol1):
+            print "Z starting at (", zRow1, ", ", zCol1, ") with initial velocity South"
+        elif (zRow2 > zRow1 and zCol2 > zCol1):
+            print "Z starting at (", zRow1, ", ", zCol1, ") with initial velocity Northeast"
+        elif (zRow2 > zRow1):
+            print "Z starting at (", zRow1, ", ", zCol1, ") with initial velocity East"
+        else:
+            print "Z starting at (", zRow1, ", ", zCol1, ") with initial velocity North"
+            
     #Looks ahead 2 moves        
     def lookahead(self,planeX, planeY, planeZ,t):
        
