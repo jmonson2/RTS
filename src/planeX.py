@@ -13,6 +13,10 @@ class planeX:
             lastPos_Col = (self.currentPos_Col - 1) % 7
         self.subCheck(positionMatrix, lastPos_Row, lastPos_Col, self.currentPos_Row, self.currentPos_Col)
         if self.flag is False:
+<<<<<<< HEAD
+=======
+            
+>>>>>>> 2d7d3d8b94ae2bfba28c3cf4db78719041daea82
             self.currentPos_Row = (self.currentPos_Row + 1) % 8
             self.currentPos_Col = (self.currentPos_Col + 1) % 7
         self.addCheck(positionMatrix)
@@ -71,6 +75,7 @@ class planeX:
             self.flag=True
         else:
             print "Failed to stop X"
+<<<<<<< HEAD
 
 
     def changeUpDown(self):
@@ -93,6 +98,11 @@ class planeX:
             return (self.currentPos_Row - 1) % 8
         elif dir == 0:
             return self.currentPos_Row
+=======
+            
+
+
+>>>>>>> 2d7d3d8b94ae2bfba28c3cf4db78719041daea82
 
     def start(self):
         self.flag=False

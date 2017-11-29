@@ -10,16 +10,13 @@ class planeZ:
 
     def move(self, positionMatrix):
         if self.flag is False: 
-        #    lastPos_Col = (self.currentPos_Col-1) % 7
-            lastPos_Row = 0  # (self.currentPos_Row - 1) % 8
-            lastPos_Col = 0  # (self.currentPos_Col - 1) % 7
-            self.changeDir(lastPos_Row, lastPos_Col)
-            self.subCheck(positionMatrix, self.currentPos_Row, lastPos_Col, self.currentPos_Row, self.currentPos_Col)
+            lastPos_Col = (self.currentPos_Col-1) % 7
+        self.subCheck(positionMatrix, self.currentPos_Row, lastPos_Col, self.currentPos_Row, self.currentPos_Col)
 
-        #if self.flag is False:
+        if self.flag is False:
             self.currentPos_Col = (self.currentPos_Col + 1) % 7
-            self.addCheck(positionMatrix)
-            self.subCheck(positionMatrix, self.currentPos_Row, lastPos_Col, self.currentPos_Row, self.currentPos_Col)
+        self.addCheck(positionMatrix)
+        self.subCheck(positionMatrix, self.currentPos_Row, lastPos_Col, self.currentPos_Row, self.currentPos_Col)
      
     def getRow(self):
         return self.currentPos_Row
@@ -66,35 +63,6 @@ class planeZ:
         elif positionMatrix[lastPos_Row][lastPos_Col] == 'XYZ':
             positionMatrix[lastPos_Row][lastPos_Col] = 'XY'
             return
-
-    def changeDir(self,lastPos_Row,lastPos_Col):
-        #0=up,1=down,2=left,3=right
-        dir=random.randint(0,7)
-        if dir==0:
-            lastPos_Col = (self.currentPos_Col - 1) % 7
-            self.currentPos_Col = (self.currentPos_Col + 1) % 7
-        elif dir==1:
-            lastPos_Col = (self.currentPos_Col + 1) % 7
-            self.currentPos_Col = (self.currentPos_Col - 1) % 7
-        elif dir==2:
-            lastPos_Row = (self.currentPos_Row - 1) % 8
-            self.currentPos_Row = (self.currentPos_Row + 1) % 8
-        elif dir==3:
-            lastPos_Row = (self.currentPos_Row + 1) % 8
-            self.currentPos_Row = (self.currentPos_Row - 1) % 8
-        if dir==4:
-            lastPos_Col = (self.currentPos_Col - 2) % 7
-            self.currentPos_Col = (self.currentPos_Col + 2) % 7
-        elif dir==5:
-            lastPos_Col = (self.currentPos_Col + 2) % 7
-            self.currentPos_Col = (self.currentPos_Col - 2) % 7
-        elif dir==6:
-            lastPos_Row = (self.currentPos_Row - 2) % 8
-            self.currentPos_Row = (self.currentPos_Row + 2) % 8
-        elif dir==7:
-            lastPos_Row = (self.currentPos_Row + 2) % 8
-            self.currentPos_Row = (self.currentPos_Row - 2) % 8
-
 
     def stop(self):
         if random.randint(0,99) >= 0:
