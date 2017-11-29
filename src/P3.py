@@ -91,19 +91,19 @@ class P3:
             
     def findSecondPosition(self,planeX, planeY, planeZ, t):
         #change to take account to the randomization in plane XYZ
-        xRow1 = (planeX.getRow() + 1) % 8
-        xCol1 = (planeX.getCol() + 1) % 7
-        yRow1 = (planeY.getRow() + 1) % 8
+        xRow1 = planeX.getFutureRow()
+        xCol1 = planeX.getFutureCol()
+        yRow1 = planeY.getFutureRow()
         yCol1 = self.yy1
         zRow1 = self.zx1
-        zCol1 = (planeZ.getCol() + 1) % 7
+        zCol1 = planeZ.getFutureCol()
        
-        xRow2 = (xRow1 + 1) % 8
-        xCol2 = (xCol1 + 1) % 7
-        yRow2 = (yRow1 + 1) % 8
+        xRow2 = planeX.getFutureFutureRow()
+        xCol2 = planeX.getFutureFutureCol()
+        yRow2 = planeY.getFutureFutureRow()
         yCol2 = yCol1
         zRow2 = zRow1
-        zCol2 = (zCol1 + 1) % 7
+        zCol2 = planeZ.getFutureFutureCol()
         l_xFlag = False
         l_yFlag = False
         l_zFlag = False
@@ -150,19 +150,19 @@ class P3:
     #Looks ahead 2 moves        
     def lookahead(self,planeX, planeY, planeZ,t):
        #change to take account with the randomization in plane XYZ
-        xRow1 = (planeX.getRow() + 1) % 8
-        xCol1 = (planeX.getCol() + 1) % 7
-        yRow1 = (planeY.getRow() + 1) % 8
+        xRow1 = planeX.getFutureRow()#(planeX.getRow() + 1) % 8
+        xCol1 = planeX.getFutureCol()#(planeX.getCol() + 1) % 7
+        yRow1 = planeY.getFutureRow()
         yCol1 = self.yy1
         zRow1 = self.zx1
-        zCol1 = (planeZ.getCol() + 1) % 7
+        zCol1 = planeZ.getFutureCol()
        
-        xRow2 = (xRow1 + 1) % 8
-        xCol2 = (xCol1 + 1) % 7
-        yRow2 = (yRow1 + 1) % 8
+        xRow2 = planeX.getFutureFutureRow()
+        xCol2 = planeX.getFutureFutureCol()
+        yRow2 = planeY.getFutureFutureRow
         yCol2 = yCol1
         zRow2 = zRow1
-        zCol2 = (zCol1 + 1) % 7
+        zCol2 = planeZ.getFutureFutureCol()
         l_xFlag = False
         l_yFlag = False
         l_zFlag = False

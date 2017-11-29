@@ -9,6 +9,7 @@ import planeZ
 import P1
 import P2
 import P3
+import random
 
 
 class main:
