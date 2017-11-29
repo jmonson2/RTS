@@ -10,10 +10,7 @@ class planeY:
 
     def move(self, positionMatrix):
         if self.flag is False:
-            lastPos_Row = 0
-            lastPos_Col = 0
-            self.changeDir(lastPos_Row, lastPos_Col)
-        #    lastPos_Row = (self.currentPos_Row-1)%8
+            lastPos_Row = (self.currentPos_Row-1)%8
             self.subCheck(positionMatrix, lastPos_Row, self.currentPos_Col, self.currentPos_Row, self.currentPos_Col)
         
         #if self.flag is False:

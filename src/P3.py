@@ -90,6 +90,7 @@ class P3:
             #print "Z COL: ",planeZ.getCol()
             
     def findSecondPosition(self,planeX, planeY, planeZ, t):
+        #change to take account to the randomization in plane XYZ
         xRow1 = (planeX.getRow() + 1) % 8
         xCol1 = (planeX.getCol() + 1) % 7
         yRow1 = (planeY.getRow() + 1) % 8
@@ -148,12 +149,12 @@ class P3:
             
     #Looks ahead 2 moves        
     def lookahead(self,planeX, planeY, planeZ,t):
-       
+       #change to take account with the randomization in plane XYZ
         xRow1 = (planeX.getRow() + 1) % 8
         xCol1 = (planeX.getCol() + 1) % 7
         yRow1 = (planeY.getRow() + 1) % 8
-        yCol1 = 2
-        zRow1 = 3
+        yCol1 = self.yy1
+        zRow1 = self.zx1
         zCol1 = (planeZ.getCol() + 1) % 7
        
         xRow2 = (xRow1 + 1) % 8
