@@ -4,6 +4,7 @@ class planeY:
     def __init__(self, positionRow, positionCol):
         self.currentPos_Row = positionRow
         self.currentPos_Col = positionCol
+        self.lastLastPos_Row=0
         self.lastPos_Row = 0
         self.futurePos_Row = 0
         self.futureFuturePos_Row=0

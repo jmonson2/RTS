@@ -159,7 +159,7 @@ class P3:
        
         xRow2 = planeX.getFutureFutureRow()
         xCol2 = planeX.getFutureFutureCol()
-        yRow2 = planeY.getFutureFutureRow
+        yRow2 = planeY.getFutureFutureRow()
         yCol2 = yCol1
         zRow2 = zRow1
         zCol2 = planeZ.getFutureFutureCol()

@@ -6,7 +6,7 @@ class planeZ:
         self.currentPos_Col = positionCol
         self.lastPos_Col = 0
         self.futurePos_Col = 0
-        self.futureFuturePos_Row = 0
+        self.futureFuturePos_Col = 0
 #Moves Row+=3 | Col+=(Col+1) % 7
 
     flag = False
