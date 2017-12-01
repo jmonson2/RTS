@@ -5,10 +5,12 @@
 import threading
 import random
 class P3:
-    def __init__(self, bufferC, bufferD, planeX, planeY,planeZ):
+    def __init__(self, bufferC, bufferD, planeX, planeY,planeZ,zx1,yy1):
         self.bufferC = bufferC
         self.bufferD = bufferD
         self.f_Collision = False
+        self.zx1=zx1
+        self.yy1=yy1
     
 
     def check(self, time, bufferC, bufferD, semC, semD,planeX,planeY,planeZ, semA, semB, interval, itterations):
@@ -88,19 +90,20 @@ class P3:
             #print "Z COL: ",planeZ.getCol()
             
     def findSecondPosition(self,planeX, planeY, planeZ, t):
-        xRow1 = (planeX.getRow() + 1) % 8
-        xCol1 = (planeX.getCol() + 1) % 7
-        yRow1 = (planeY.getRow() + 1) % 8
-        yCol1 = 2
-        zRow1 = 3
-        zCol1 = (planeZ.getCol() + 1) % 7
+        #change to take account to the randomization in plane XYZ
+        xRow1 = planeX.getFutureRow()
+        xCol1 = planeX.getFutureCol()
+        yRow1 = planeY.getFutureRow()
+        yCol1 = self.yy1
+        zRow1 = self.zx1
+        zCol1 = planeZ.getFutureCol()
        
-        xRow2 = (xRow1 + 1) % 8
-        xCol2 = (xCol1 + 1) % 7
-        yRow2 = (yRow1 + 1) % 8
+        xRow2 = planeX.getFutureFutureRow()
+        xCol2 = planeX.getFutureFutureCol()
+        yRow2 = planeY.getFutureFutureRow()
         yCol2 = yCol1
         zRow2 = zRow1
-        zCol2 = (zCol1 + 1) % 7
+        zCol2 = planeZ.getFutureFutureCol()
         l_xFlag = False
         l_yFlag = False
         l_zFlag = False
@@ -146,20 +149,20 @@ class P3:
             
     #Looks ahead 2 moves        
     def lookahead(self,planeX, planeY, planeZ,t):
+       #change to take account with the randomization in plane XYZ
+        xRow1 = planeX.getFutureRow()#(planeX.getRow() + 1) % 8
+        xCol1 = planeX.getFutureCol()#(planeX.getCol() + 1) % 7
+        yRow1 = planeY.getFutureRow()
+        yCol1 = self.yy1
+        zRow1 = self.zx1
+        zCol1 = planeZ.getFutureCol()
        
-        xRow1 = (planeX.getRow() + 1) % 8
-        xCol1 = (planeX.getCol() + 1) % 7
-        yRow1 = (planeY.getRow() + 1) % 8
-        yCol1 = 2
-        zRow1 = 3
-        zCol1 = (planeZ.getCol() + 1) % 7
-       
-        xRow2 = (xRow1 + 1) % 8
-        xCol2 = (xCol1 + 1) % 7
-        yRow2 = (yRow1 + 1) % 8
+        xRow2 = planeX.getFutureFutureRow()
+        xCol2 = planeX.getFutureFutureCol()
+        yRow2 = planeY.getFutureFutureRow()
         yCol2 = yCol1
         zRow2 = zRow1
-        zCol2 = (zCol1 + 1) % 7
+        zCol2 = planeZ.getFutureFutureCol()
         l_xFlag = False
         l_yFlag = False
         l_zFlag = False

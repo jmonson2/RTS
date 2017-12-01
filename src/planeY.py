@@ -4,19 +4,24 @@ class planeY:
     def __init__(self, positionRow, positionCol):
         self.currentPos_Row = positionRow
         self.currentPos_Col = positionCol
+        self.lastLastPos_Row=0
+        self.lastPos_Row = 0
+        self.futurePos_Row = 0
+        self.futureFuturePos_Row=0
 #Moves Row+=(Row+1) % 8 | Col+=2
 
     flag = False
 
     def move(self, positionMatrix):
         if self.flag is False:
-            lastPos_Row = (self.currentPos_Row-1)%8
-        self.subCheck(positionMatrix, lastPos_Row, self.currentPos_Col, self.currentPos_Row, self.currentPos_Col)
+            self.currentPos_Row = self.changeLeftRight()
+            #lastPos_Row = (self.currentPos_Row-1)%8
+            self.subCheck(positionMatrix, self.lastPos_Row, self.currentPos_Col, self.currentPos_Row, self.currentPos_Col)
         
-        if self.flag is False:
-            self.currentPos_Row = (self.currentPos_Row + 1) % 8
-        self.subCheck(positionMatrix, (lastPos_Row-1)%8, self.currentPos_Col, self.currentPos_Row, self.currentPos_Col) 
-        self.addCheck(positionMatrix)
+        #if self.flag is False:
+
+            self.subCheck(positionMatrix, self.lastLastPos_Row, self.currentPos_Col, self.currentPos_Row, self.currentPos_Col)
+            self.addCheck(positionMatrix)
         
         
 
@@ -25,6 +30,15 @@ class planeY:
 
     def getCol(self):
         return self.currentPos_Col
+
+    def getLastRow(self):
+        return self.lastPos_Row
+
+    def getFutureRow(self):
+        return self.futurePos_Row
+
+    def getFutureFutureRow(self):
+        return self.futureFuturePos_Row
 
     def addCheck(self, positionMatrix):
        if positionMatrix[self.currentPos_Row][self.currentPos_Col] == 0:
@@ -66,6 +80,27 @@ class planeY:
         elif positionMatrix[lastPos_Row][lastPos_Col] == 'XYZ':
             positionMatrix[lastPos_Row][lastPos_Col] = 'XZ'
             return
+
+
+    def changeLeftRight(self):
+        dir = random.randint(0, 2)
+        if dir == 1:
+            self.lastPos_Row = (self.currentPos_Row - 1) % 8
+            self.lastLastPos_Row = (self.lastPos_Row - 2) % 8
+            self.futurePos_Row=(self.currentPos_Col + 2) % 8
+            self.futureFuturePos_Row = (self.currentPos_Row + 3) % 8
+            return (self.currentPos_Row + 1) % 8
+        elif dir == 2:
+            self.lastPos_Row = (self.currentPos_Row + 1) % 8
+            self.lastLastPos_Row = (self.lastPos_Row + 2) % 8
+            self.futurePos_Row=(self.currentPos_Col - 2) % 8
+            self.futureFuturePos_Row = (self.currentPos_Row - 3) % 8
+            return (self.currentPos_Row - 1) % 8
+        elif dir == 0:
+            #self.lastPos_Row = (self.currentPos_Row - 1) % 8
+            #self.futurePos_Row = (self.currentPos_Row + 2) % 8
+            #self.futureFuturePos_Row = (self.currentPos_Row + 3) % 8
+            return self.currentPos_Row
 
     def stop(self):
         if random.randint(0,99) > 5:
