@@ -18,8 +18,8 @@ class planeZ:
 
         #if self.flag is False:
             self.currentPos_Col = self.changeUpDown()
-        self.addCheck(positionMatrix)
-        self.subCheck(positionMatrix, self.currentPos_Row, self.lastPos_Col, self.currentPos_Row, self.currentPos_Col)
+            self.addCheck(positionMatrix)
+            self.subCheck(positionMatrix, self.currentPos_Row, self.lastPos_Col, self.currentPos_Row, self.currentPos_Col)
      
     def getRow(self):
         return self.currentPos_Row

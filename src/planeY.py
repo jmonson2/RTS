@@ -20,8 +20,8 @@ class planeY:
         
         #if self.flag is False:
 
-        self.subCheck(positionMatrix, self.lastLastPos_Row, self.currentPos_Col, self.currentPos_Row, self.currentPos_Col)
-        self.addCheck(positionMatrix)
+            self.subCheck(positionMatrix, self.lastLastPos_Row, self.currentPos_Col, self.currentPos_Row, self.currentPos_Col)
+            self.addCheck(positionMatrix)
         
         
 
