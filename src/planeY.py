@@ -97,6 +97,9 @@ class planeY:
             self.futureFuturePos_Row = (self.currentPos_Row - 3) % 8
             return (self.currentPos_Row - 1) % 8
         elif dir == 0:
+            #self.lastPos_Row = (self.currentPos_Row - 1) % 8
+            #self.futurePos_Row = (self.currentPos_Row + 2) % 8
+            #self.futureFuturePos_Row = (self.currentPos_Row + 3) % 8
             return self.currentPos_Row
 
     def stop(self):

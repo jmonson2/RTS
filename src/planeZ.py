@@ -94,6 +94,9 @@ class planeZ:
             self.futureFuturePos_Col = (self.currentPos_Col - 3) % 7
             return (self.currentPos_Col - 1) % 7
         elif dir == 0:
+            #self.lastPos_Col = (self.currentPos_Col - 1) % 7
+            #self.futurePos_Col = (self.currentPos_Col + 2) % 7
+            #self.futureFuturePos_Col = (self.currentPos_Col + 3) % 7
             return self.currentPos_Col
 
     def stop(self):

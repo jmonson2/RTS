@@ -16,14 +16,14 @@ class planeX:
 
     def move(self, positionMatrix):
         if self.flag is False:
-            lastPos_Row = (self.currentPos_Row - 1) % 8
-            lastPos_Col = (self.currentPos_Col - 1) % 7
-            self.subCheck(positionMatrix, lastPos_Row, lastPos_Col, self.currentPos_Row, self.currentPos_Col)
+            #lastPos_Row = (self.currentPos_Row - 1) % 8
+            #lastPos_Col = (self.currentPos_Col - 1) % 7
+            self.subCheck(positionMatrix, self.lastPos_Row, self.lastPos_Col, self.currentPos_Row, self.currentPos_Col)
         if self.flag is False:
             self.currentPos_Row = self.changeLeftRight()
             self.currentPos_Col = self.changeUpDown()
             self.addCheck(positionMatrix)
-            self.subCheck(positionMatrix, lastPos_Row, lastPos_Col, self.currentPos_Row, self.currentPos_Col)
+            self.subCheck(positionMatrix, self.lastPos_Row, self.lastPos_Col, self.currentPos_Row, self.currentPos_Col)
         
 
     def getRow(self):
@@ -104,6 +104,9 @@ class planeX:
             self.futureFuturePos_Col=(self.currentPos_Col - 3) % 7
             return (self.currentPos_Col - 1) % 7
         elif dir==0:
+            #self.lastPos_Col = (self.currentPos_Col - 1) % 7
+            #self.futurePos_Col = (self.currentPos_Col + 2) % 7
+            #self.futureFuturePos_Col = (self.currentPos_Col + 3) % 7
             return self.currentPos_Col
     def changeLeftRight(self):
         dir = random.randint(0, 2)
@@ -118,6 +121,9 @@ class planeX:
             self.futurePos_Col=(self.currentPos_Row - 2) % 8
             return (self.currentPos_Row - 1) % 8
         elif dir == 0:
+            #self.lastPos_Row = (self.currentPos_Row - 1) % 8
+            #self.futurePos_Row = (self.currentPos_Row + 2) % 8
+            #self.futureFuturePos_Row = (self.currentPos_Row + 3) % 8
             return self.currentPos_Row
 
 

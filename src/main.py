@@ -59,7 +59,7 @@ class main:
 
     p1 = P1.P1(0, plane_X, plane_Y, plane_Z, bufferA, bufferB, semA, semB)
     p2 = P2.P2(0, bufferC, bufferD, semA, semB, semC, semD)
-    p3 = P3.P3(bufferC, bufferD, plane_X, plane_Y, plane_Z,bufferAXVarX,bufferAYVarY)
+    p3 = P3.P3(bufferC, bufferD, plane_X, plane_Y, plane_Z,bufferAZVarX,bufferAYVarY)
     
 
     #thread class declarations
